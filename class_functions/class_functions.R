@@ -18,11 +18,11 @@ download_class_data <- function(file_name){
 download_class_code <- function(class_number){
   
   result = tryCatch({
-    downlaod_class_code_with_extension (class_number, is_R_file = FALSE)
+    download_class_code_with_extension(class_number, is_R_file = FALSE)
   },  warning = function(w) {
     file_name <- paste0("class_", sprintf("%02d", class_number), ".Rmd")
     file.remove(file_name)
-    downlaod_class_code_with_extension (class_number, is_R_file = TRUE)
+    download_class_code_with_extension (class_number, is_R_file = TRUE)
   }, finally = {
   })
   
