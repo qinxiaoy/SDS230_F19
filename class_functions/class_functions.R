@@ -15,7 +15,7 @@ download_class_data <- function(file_name){
 
 
 # A function to download the code for each class
-downlaod_class_code <- function(class_number){
+download_class_code <- function(class_number){
   
   result = tryCatch({
     downlaod_class_code_with_extension (class_number, is_R_file = FALSE)
@@ -34,7 +34,7 @@ downlaod_class_code <- function(class_number){
 
 
 # A helper function to help get the code for each class based on the code's extension
-downlaod_class_code_with_extension <- function(class_number, is_R_file = FALSE){
+download_class_code_with_extension <- function(class_number, is_R_file = FALSE){
   
   base_path <- "https://github.com/emeyers/SDS230_F19/blob/master/class_code/"
   
