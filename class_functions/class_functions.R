@@ -3,7 +3,9 @@
 # downloads data for the class from github
 download_class_data <- function(file_name){
   
-  base_path <- "https://github.com/emeyers/SDS230_F19/blob/master/class_data/"
+  #base_path <- "https://github.com/emeyers/SDS230_F19/blob/master/class_data/"
+  base_path <- "https://raw.githubusercontent.com/emeyers/SDS230_F19/master/class_data/"
+  
   full_path <- paste0(base_path, file_name)
   
   download.file(full_path, file_name)
@@ -36,7 +38,8 @@ download_class_code <- function(class_number){
 # A helper function to help get the code for each class based on the code's extension
 download_class_code_with_extension <- function(class_number, is_R_file = FALSE){
   
-  base_path <- "https://github.com/emeyers/SDS230_F19/blob/master/class_code/"
+  base_path <- "https://raw.githubusercontent.com/emeyers/SDS230_F19/master/class_code/"
+  
   
   extension <- ".Rmd"
   if (is_R_file)
