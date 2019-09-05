@@ -1,0 +1,422 @@
+---
+title: "Class 3 notes and code"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+
+$\\$
+
+
+
+## Review
+
+
+#### Categorical data
+
+
+Last class we created bar plots and pie charts which are ways to visualize categorical data
+
+
+```{r}
+
+library(okcupiddata)
+
+drinks_table <- table(profiles$drinks)
+
+barplot(drinks_table, 
+	ylab = "Count", 
+	xlab = "Type of drinker", 
+	main = "Counts of different types of drinkers")
+
+
+
+pie(drinks_table, 
+	main = "Proportions of different types of drinkers")
+
+```
+
+
+
+$\\$
+
+
+
+
+
+Our plots are dominated by social drinkers - let's remove them...
+
+```{r}
+
+nonsocial_inds <- drinks_table < 10000
+nonsocial_drinks_table <- drinks_table[nonsocial_inds]
+
+# plot a pie and bar plot with the social drikers removed
+
+
+
+```
+
+[There are other websites/apps for dating as well](https://i.kym-cdn.com/photos/images/original/001/293/992/d80.jpg)
+
+
+
+
+$\\$
+
+
+
+
+
+Can you figure out how to change the colors of the bars/sections in the bar/pie charts? 
+
+```{r}
+
+
+```
+
+
+
+[Helpdesk cat is wise](https://tr4.cbsistatic.com/hub/i/2017/06/12/bd6094f4-c445-4619-a2a4-376b3a8c2065/google-business-cat.jpg)
+
+
+
+
+
+
+$\\$
+
+
+
+
+
+
+
+## Examining quantiative data
+
+There are several summary statistics useful for describing quantitative data such as the mean and the median. Use the mean() and median() functions to extract measures of the central tendency for OkCupid users' heights.
+
+```{r}
+
+
+```
+
+
+Anything go wrong? 
+
+
+
+$\\$
+
+
+
+It might be useful to ignore the NA values using the argument na.rm = TRUE
+
+```{r}
+
+
+
+```
+
+
+
+$\\$
+
+
+
+Fact: the average height of males in US is 69.6", and of females is 64". Also 60% of the OkCupid user in the data set are male. Is the height of the average OkCupid user what we would expect from the US population? Would we expect them to be the same? 
+
+```{r}
+
+
+
+```
+
+
+
+
+
+$\\$
+
+
+
+
+
+We can plot histograms of heights using the hist() function. Plot a histogram of heights and use the nclass = 50 argument to create 50 bars on the plot (the default number of bins is 10). 
+
+```{r}
+
+
+```
+
+
+We can add lines to our plots using the abline() function. For example abline(v = 60) would add a verticle line at the value of 60. Can you add a verticle line at the average OkCupid users' height? 
+
+
+```{r}
+
+
+
+```
+
+
+
+
+$\\$
+
+
+
+
+Boxplots visually show a version of a 5 number summary (min, Q1, median, Q3, max). We can create boxplots using the boxplot() function. 
+
+Create a boxplot of okcupid users heights.
+
+```{r}
+
+
+
+```
+
+If there are extreme outliers in a plot we need to investigate them. If they are errors we can remove them, otherwise we need to take them into account. 
+
+
+
+
+
+$\\$
+
+
+
+
+
+Let's now look at data from CitiBike in New York City. How many cases are there any how many variables? What does each case corresond to? 
+
+```{r}
+
+# download.file("https://yale.box.com/shared/static/t3ezfphfg729x03079aajop0d3f454wm.rda", "daily_bike_totals.rda")
+
+load("daily_bike_totals.rda")
+
+
+
+
+```
+
+
+
+
+
+$\\$
+
+
+
+
+
+Scatter plots show the relationships between two quantiative variables. We can use the plot(x, y) function to create scatter plots. Create a scatter plot of the maximum temperature as a function of the minimum temperature. Also create a scatter plot of the number of trips as a function of the date. 
+
+```{r}
+
+
+
+```
+
+
+
+
+
+$\\$
+
+
+
+
+
+
+
+## For loops
+
+For loops are useful when you want to repeat a piece of code many times under similar conditions
+
+The syntax for a for loop is:
+
+```{r}
+
+for (i in 1:100) {
+	# do something
+}
+
+```
+
+
+
+
+$\\$
+
+
+
+
+
+If we just want to print the value of *i* we can use: 
+
+```{r}
+
+for (i in 1:100) {
+	print(i)
+}
+
+```
+
+
+
+
+$\\$
+
+
+
+
+
+For loops are particular useful in combination with vectors that can store the results
+
+```{r}
+
+my_results <- NULL      # create an empty vector to store the results
+for (i in 1:100) {
+	 my_results[i] <- i^2
+}
+
+```
+
+
+
+
+
+$\\$
+
+
+
+
+
+Sometimes there are more efficient ways to do the same thing without for loops
+
+
+```{r}
+
+(1:100)^2
+
+```
+
+
+
+
+$\\$
+
+
+
+
+
+#### Generating random numbers in R
+
+R has built in functions to generate data from different distributions
+
+The uniform distribution:
+
+```{r}
+
+# generate n = 100 points from U(0, 1)
+rand_data <- runif(100) 
+hist(rand_data)
+
+```
+
+
+
+$\\$
+
+
+
+The normal distribution 
+
+```{r}
+
+# generate n = 100 points from N(0, 1)
+rand_data  <- rnorm(100)
+hist(rand_data)
+
+```
+	
+
+n = 100 in the above plots. What happens if you make n = 1,000 or n = 10,000.
+
+What happens if you change the number of bins in the histogram using the nclass argument? 
+
+
+
+
+$\\$
+
+
+
+
+
+If we want the same sequence of random numbers we can set the random number generating seed
+
+```{r}
+
+set.seed(123)
+runif(10) 
+
+set.seed(123)
+runif(10) 
+
+```
+
+
+
+
+$\\$
+
+
+
+
+Try generating 100 random data points from a uniform distribution and calculate the mean $\bar{x}$
+
+```{r}
+
+
+
+```
+
+If you run the code in the R chunck above again do you get the same answer (i.e, is $\bar{x}$ the same)? 
+
+
+
+
+$\\$
+
+
+
+
+
+#### Sampling distributions
+
+A distribution of statistics is called a sampling distribution 
+
+Can you generate and plot a sampling distribution of sample means $\bar{x}$'s?
+
+
+```{r}
+
+
+
+
+
+```
+
+
+
+
+
