@@ -40,3 +40,19 @@ download_class_code <- function(class_number){
 
 
 
+
+
+# A function to download the code for each class
+download_homework <- function(homework_number){
+  
+  base_path <- "https://raw.githubusercontent.com/emeyers/SDS230_F19/master/homework/"
+  
+
+    file_name <- paste0("homework_", sprintf("%02d", homework_number), ".Rmd")
+    full_path <- paste0(base_path, file_name)
+    download.file(full_path, file_name)
+    
+}
+
+
+
