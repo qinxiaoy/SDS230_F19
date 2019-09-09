@@ -34,6 +34,11 @@ Some useful LaTeX symbols for the problem set are: $\mu$, $\sigma$, $\bar{x}$, $
 <!-- The R chunk below sets some parameters that will be used in the rest of the document. Please ignore it and do not modify it. -->
 ```{r message=FALSE, warning=FALSE, tidy=TRUE, echo = FALSE}
 
+
+# If you are running the homework on your personal computer, please uncomment the line below to and run it once to install the package latex2exp
+#install.packages("latex2exp")
+
+
 library(knitr)
 library(latex2exp)
 
