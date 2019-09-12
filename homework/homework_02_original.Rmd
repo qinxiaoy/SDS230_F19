@@ -249,6 +249,98 @@ Repeat part 2.1 but using a sample size of n = 100. Do the answers to the questi
 
 
 
+$\\$
+
+
+
+
+
+
+## Problem 3: Calculating confidence intervals using the bootstrap
+
+
+As discussed in class, we can use the bootstrap to estimate standard errors which can then be used to calculate confidence intervals. Let's use the bootstrap to calculate a confidence interval for the mean height of OkCupid users. 
+
+
+
+$\\$
+
+
+**Part 3.1 (10 points)**
+
+To make this calculate a bit more efficient when calculating the confidence intervals, let's use the heights from only the first 20 users, and then do the following steps:
+
+1) Estimate the standard error of the mean height using the bootstrap
+2) Plot the bootstrap distribution
+3) Calculate an approximate confidence interval for the heights of OkCupid users using the formula CI $[\bar{x} - 2 \cdot SE^*,  \bar{x} + 2 \cdot SE^*]$
+
+
+Report your confidence interval below and describe what the confidnece interval tells you. 
+
+
+```{r bootstrap}
+
+library(okcupiddata)
+
+
+
+
+```
+
+
+**Answer:** 
+
+
+
+
+
+
+$\\$
+
+
+
+
+
+
+**Part 3.2  (10 points) **
+
+Run your code above again but use the first 100 OkCupid users and then use the first 1000. Report what the confidence interval is. Does it seem much smaller? Note: you do not need to show code here, just modify the code above rerun it and then report the results.
+
+
+**Answer:**  
+
+
+
+
+
+$\\$
+
+
+
+
+**Part 3.3 (10 points) **
+
+
+Now write code to create confidence intervals separately for the heights of male and female OkCupid users by using the subset() function to get separate vectors of heights for males and females and use the first 100 male and 100 female okcupid users. Does it appear plausible that the actual mean heights for males $\mu_{male}$ is the same as the actual mean heights for females $\mu_{female}$ 
+
+
+
+```{r problem_3_3}
+
+the_heights_male <- subset(profiles, sex == "m")
+
+# continue from here...
+
+
+
+```
+
+
+**Answers:** 
+
+
+
+
 
 
 
